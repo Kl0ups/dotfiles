@@ -1,0 +1,16 @@
+
+alias nv='nvim'
+alias src='source'
+
+alias sudo='sudo '
+alias watch='coloralias watch -c -- '
+alias xargs='xargs '
+
+alias gcdev='git checkout develop'
+alias gcstag='git checkout staging'
+alias gcprod='git checkout production'
+
+alias dc='docker-compose'
+alias build_docker_app='docker-compose down -v --rmi all && docker-compose build && docker-compose up'
+
+alias conda='~/miniconda3/bin/conda'

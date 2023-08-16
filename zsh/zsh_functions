@@ -1,0 +1,36 @@
+
+
+function coloralias() {
+    $1 $(echo - "${@:2}" | sed 's/--color=\w\+/--color=always/')
+}
+
+function gpup() {
+    git push --set-upstream origin "$1"
+}
+function gbfeat() {
+    git branch "issue-$1"
+}
+function gcfeat() {
+    git checkout "issue-$1"
+}
+
+function kxn() {
+    1="$(echo - "$1" | tr -c '[:alnum:]-_' '[ *]')"
+    local ctx="$(echo - "$1" | awk '{print $1}')"; ctx="${ctx:l}"
+    local ns="${2-$(echo - "$1" | awk '{print $2}')}"; ns="${ns:l}"
+
+    kubectx "$ctx"
+    [ -n "$ns" ] && kubens "$ns"
+}
+
+function check_alias() {
+    buffer=""
+    for arg in "$@"; do
+      buffer="${buffer}${arg}"
+      if [ "$#" -gt 1 ]; then
+        buffer="${buffer} "
+      fi
+    done
+    alias | grep "${buffer}"
+}
+
